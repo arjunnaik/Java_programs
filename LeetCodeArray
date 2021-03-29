@@ -1,0 +1,120 @@
+--two-sum
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int num[]=new int[2];
+        for(int i=0; i<nums.length-1; i++)
+        {
+            for (int j=1; j<nums.length; j++)
+            {
+                if (nums[i]+nums[j]==target && i!=j)
+               {
+                num[0]=i;
+                num[1]=j;
+                break;
+               }
+            }
+        }
+        return num;
+    }
+}
+
+
+--median-of-two-sorted-arrays
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int temp[]=new int[nums1.length+nums2.length];
+        int i=0;
+        for (int j:nums1)
+            temp[i++]=j;
+        for (int j:nums2)
+            temp[i++]=j;
+        Arrays.sort(temp);
+   
+        if (temp.length%2==0)
+        {
+            return (temp[temp.length/2-1]+temp[temp.length/2])/2.0;
+        }
+        return temp[temp.length/2];
+    }
+}
+
+
+--container-with-most-water
+class Solution {
+    public int maxArea(int[] height) {
+        int max=0,small=0,k;
+        
+        
+        for (int i=0; i<height.length-1; i++)
+        {
+            for (int j=1; j<height.length; j++)
+            {  if(height[i]<height[j])
+                {    small=height[i];
+                      k=j-i;
+                }
+                else
+                {
+                    small=height[j];
+                    k=i-j;
+                }
+                if (k<=0)
+                    k*=-1;
+                if (max<small*k & i!=j)
+                    max=small*k;
+               
+            }
+        }
+        
+        return max;
+    }
+}
+
+
+
+--remove-duplicates-from-sorted-array
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int var=0;
+        if(nums.length==0)
+        {
+            return 0;
+        }
+        else
+        {
+            
+        nums[var++]=nums[0];
+        for (int i=1; i<nums.length; i++)
+        {
+            if (nums[i]>nums[i-1])
+            {
+             nums[var++]=nums[i];   
+            }
+        }
+        }
+     return var;   
+    }
+}
+--remove-element
+class Solution {
+    public int removeElement(int[] nums, int val) {
+      int x=0;
+        for (int i=0; i<nums.length; i++)
+        {
+            if (nums[i]!=val)
+            {
+                nums[x++]=nums[i];
+            }
+        }
+        
+        
+        return x;
+        
+    }
+}
+
+
+
+
+
+
+
